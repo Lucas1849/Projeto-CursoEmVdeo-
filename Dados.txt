@@ -1,0 +1,6 @@
+Lucas;18
+Maria;18
+Alessandra;45
+Luiz;35
+Leonardo;19
+Jubisnaldo;49
