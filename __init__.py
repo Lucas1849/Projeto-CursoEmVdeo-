@@ -1,24 +1,32 @@
-def leiaInt(msg):
-    while True:
-        try:
-            n = int(input(msg))
-        except (ValueError,TypeError):
-            print(f'\033[0;31mERRO! Digite um número inteiro válido:  \033[m')
-            continue
-        except (KeyboardInterrupt):
-            print(f'\033[0;31mUsuário prefiriu não digitar esse número.\033[m')
-            return 0
-        else:
-            return n
+
+def Abrir(arquivo):
+    try:
+        a = open(arquivo,'a')
+        a.close()
+    except:
+        print('\033[31mHouve um erro na arbetura do arquivo!\033[m')
+    else:
+        print(f'\033[32mArquivo {arquivo} aberto com sucesso!\033[m')
 
 
-def título(msg):
-    tamnh = len(msg) + 4
-    print('-'*tamnh)
-    print(f'  {msg}')
-    print('-'*tamnh)
+def Escrever(arquivo,nome,idade):
+    try:
+        a = open(arquivo,'at')
+    except:
+        print('\033[31mHouve um erro ao escrever no arquivo\033[m')
+    else:
+        a.write(f'{nome};{idade}\n')
+        a.close()
 
 
-def Menu(*txt):
-    for c,v in enumerate(txt):
-        print(f'\033[33m{c+1}\033[m - \033[34m{v}\033[m')
+
+def Ler(arquivo):
+    try:
+        a = open(arquivo,'rt')
+    except:
+        print('\033[31mHouve um erro ao abrir seu arquivo!\033[m')
+    else:
+        for linha in a:
+            dado = linha.split(';')
+            dado[1] = dado[1].replace('\n','')
+            print(f'{dado[0]:<20}{dado[1]:>3} ')
